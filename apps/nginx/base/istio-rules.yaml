@@ -14,6 +14,26 @@ spec:
     hosts:
     - "*"
 ---
+
+apiVersion: networking.istio.io/v1alpha3
+kind: ServiceEntry
+metadata:
+  name: google-egress
+  namespace: default
+spec:
+  hosts:
+  - www.google.com
+  location: MESH_EXTERNAL
+  ports:
+  - number: 80
+    name: http
+    protocol: HTTP
+  - number: 443
+    name: https
+    protocol: TLS
+  resolution: DNS
+
+---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
@@ -27,6 +47,6 @@ spec:
   http:
   - route:
     - destination:
-        host: nginx-poc-service # The name of your K8s service
+        host: nginx-poc-svc # The name of your K8s service
         port:
           number: 80

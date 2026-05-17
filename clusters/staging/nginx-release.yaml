@@ -7,7 +7,7 @@ spec:
   interval: 5m
   chart:
     spec:
-      chart: ./charts/nginx # Path to the chart in your Git repo
+      chart: apps/nginx/charts/nginx # Path to the chart in your Git repo
       sourceRef:
         kind: GitRepository
         name: nginx-source

@@ -1,0 +1,13 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: nginx-ingress-cert
+  namespace: istio-system # MUST be in the same namespace as the Ingress Gateway pod
+spec:
+  secretName: nginx-ingress-tls-secret # Cert-Manager will create this secret automatically
+  issuerRef:
+    name: selfsigned-issuer
+    kind: ClusterIssuer
+  commonName: "localhost"
+  dnsNames:
+  - "localhost"

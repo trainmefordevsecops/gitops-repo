@@ -8,9 +8,9 @@ spec:
     istio: ingressgateway # This connects to the "Hardware" you installed
   servers:
   - port:
-      number: 443
-      name: https
-      protocol: HTTPS
+      number: 80
+      name: http
+      protocol: HTTP
     hosts:
     - "*"
 ---

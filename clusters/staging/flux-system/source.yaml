@@ -7,4 +7,4 @@ spec:
   interval: 1m
   url: https://github.com/trainmefordevsecops/gitops-repo
   ref:
-    tag: "v1.0.0" # Flux will only deploy code from this specific Git tag
+    tag: "v2.0.0" # Flux will only deploy code from this specific Git tag

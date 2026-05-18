@@ -8,14 +8,11 @@ spec:
     istio: ingressgateway # This connects to the "Hardware" you installed
   servers:
   - port:
-      number: 443
-      name: https
-      protocol: HTTPS
+      number: 80
+      name: http
+      protocol: HTTP
     hosts:
-      - "*"
-    tls:
-      mode: SIMPLE # Can be SIMPLE or MUTUAL depending on your architecture
-      credentialName: nginx-gateway-tls # This is the secret name Cert-Manager will generate
+    - "*"
 ---
 
 apiVersion: networking.istio.io/v1alpha3

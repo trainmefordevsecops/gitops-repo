@@ -1,0 +1,12 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: cert-manager-sync             # <--- This matches the missing resource name
+  namespace: flux-system
+spec:
+  interval: 10m
+  path: ./apps/cert-manager           # <--- Path to your actual cert-manager manifests
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system

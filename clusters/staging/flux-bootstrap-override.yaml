@@ -18,6 +18,20 @@ metadata:
   namespace: flux-system
 spec:
   interval: 5m0s
+  path: ./clusters/staging/flux-system
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+---
+# Driver 2: Manages your Staging Applications (Nginx, Cert-Manager)
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: flux-staging-apps
+  namespace: flux-system
+spec:
+  interval: 5m0s
   path: ./clusters/staging
   prune: true
   sourceRef:

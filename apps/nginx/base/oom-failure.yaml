@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: oom-crash-test
+  namespace: staging
+  labels:
+    app: oom-test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: oom-test
+  template:
+    metadata:
+      matchLabels:
+        app: oom-test
+    spec:
+      containers:
+      - name: memory-hog
+        image: alpine:latest
+        command: ["/bin/sh", "-c"]
+        # This command attempts to allocate a 50MB file directly in memory (shared memory)
+        args: ["dd if=/dev/zero of=/dev/shm/fill-up bs=1M count=50 && sleep 3600"]
+        resources:
+          limits:
+            memory: "20Mi"  # <-- Hard ceiling set well below the 50MB allocation target
+          requests:
+            memory: "10Mi"

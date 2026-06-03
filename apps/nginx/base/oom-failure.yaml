@@ -12,7 +12,7 @@ spec:
       app: oom-test
   template:
     metadata:
-      matchLabels:
+      labels:
         app: oom-test
     spec:
       containers:
